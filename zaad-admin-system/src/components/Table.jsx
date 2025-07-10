@@ -1,20 +1,20 @@
 const Table = ({ headers, children, className = '' }) => {
   return (
-    <div className={`overflow-x-auto ${className}`}>
-      <table className="min-w-full bg-white border border-gray-200 rounded-lg">
-        <thead className="bg-gray-50">
+    <div className={`table-enhanced animate-fadeIn ${className}`}>
+      <table className="min-w-full">
+        <thead>
           <tr>
             {headers.map((header, index) => (
               <th
                 key={index}
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200"
+                className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200"
               >
                 {header}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200">
+        <tbody className="divide-y divide-gray-100">
           {children}
         </tbody>
       </table>
@@ -22,17 +22,23 @@ const Table = ({ headers, children, className = '' }) => {
   );
 };
 
-const TableRow = ({ children, className = '' }) => {
+const TableRow = ({ children, className = '', ...props }) => {
   return (
-    <tr className={`hover:bg-gray-50 ${className}`}>
+    <tr 
+      className={`hover:bg-gradient-to-r hover:from-green-50 hover:to-green-50 transition-all duration-200 hover:shadow-sm ${className}`}
+      {...props}
+    >
       {children}
     </tr>
   );
 };
 
-const TableCell = ({ children, className = '' }) => {
+const TableCell = ({ children, className = '', ...props }) => {
   return (
-    <td className={`px-6 py-4 whitespace-nowrap text-sm text-gray-900 ${className}`}>
+    <td 
+      className={`px-6 py-4 whitespace-nowrap text-sm text-gray-900 ${className}`}
+      {...props}
+    >
       {children}
     </td>
   );
